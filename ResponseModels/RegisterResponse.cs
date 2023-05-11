@@ -10,7 +10,6 @@ using System.Xml.Linq;
 
 namespace SpaceTradersDotNetSDK.ResponseModels
 {
-    [IsResponse]
     public class RegisterResponse
     {
         /// <summary>

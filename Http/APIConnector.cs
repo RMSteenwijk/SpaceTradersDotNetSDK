@@ -249,7 +249,8 @@ namespace SpaceTradersDotNetSDK.Http
       {
         response = await _retryHandler.HandleRetry(request, response, async (newRequest, ct) =>
         {
-          await ApplyAuthenticator(request).ConfigureAwait(false);
+            if (request.RequiresAccessToken)
+                await ApplyAuthenticator(request).ConfigureAwait(false);
           var newResponse = await _httpClient.DoRequest(request, ct).ConfigureAwait(false);
           _httpLogger?.OnResponse(newResponse);
           ResponseReceived?.Invoke(this, response);

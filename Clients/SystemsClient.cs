@@ -15,11 +15,11 @@ namespace SpaceTradersDotNetSDK.Clients
         /// <param name="page"></param>
         /// <returns></returns>
         /// <exception cref="ApplicationException"></exception>
-        public async Task<List<Models.System>> GetAllSystems(int limit, int page)
+        public async Task<List<Models.System>> GetAllSystems(int limit = 20, int page = 1)
         {
-            if (limit < 0 || limit > 20)
+            if (limit < 1 || limit > 20)
                 throw new ApplicationException($"Can't set limit lower then 0 or higher then 20");
-            if (page < 0)
+            if (page < 1)
                 throw new ApplicationException($"Can't set page lower then 0");
 
             return await API.Get<List<Models.System>>(new Uri("systems", UriKind.Relative), new Dictionary<string, string>
@@ -52,13 +52,13 @@ namespace SpaceTradersDotNetSDK.Clients
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ApplicationException"></exception>
-        public async Task<List<Waypoint>> ListWaypoints(string systemSymbol, int limit, int page)
+        public async Task<List<Waypoint>> ListWaypoints(string systemSymbol, int limit = 20, int page = 1)
         {
             if (string.IsNullOrEmpty(systemSymbol))
                 throw new ArgumentNullException(nameof(systemSymbol));
-            if (limit < 0 || limit > 20)
+            if (limit < 1 || limit > 20)
                 throw new ApplicationException($"Can't set limit lower then 0 or higher then 20");
-            if (page < 0)
+            if (page < 1)
                 throw new ApplicationException($"Can't set page lower then 0");
 
             return await API.Get<List<Waypoint>>(new Uri($"systems/{systemSymbol}/waypoints", UriKind.Relative), new Dictionary<string, string>

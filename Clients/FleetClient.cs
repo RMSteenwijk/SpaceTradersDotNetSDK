@@ -29,11 +29,11 @@ namespace SpaceTradersDotNetSDK.Clients
         /// <param name="page"></param>
         /// <returns></returns>
         /// <exception cref="ApplicationException"></exception>
-        public async Task<List<Ship>> ListMyShips(int limit, int page)
+        public async Task<List<Ship>> ListMyShips(int limit = 20, int page = 1)
         {
-            if (limit < 0 || limit > 20)
+            if (limit < 1 || limit > 20)
                 throw new ApplicationException($"Can't set limit lower then 0 or higher then 20");
-            if (page < 0)
+            if (page < 1)
                 throw new ApplicationException($"Can't set page lower then 0");
 
             return await API.Get<List<Ship>>(new Uri("my/ships", UriKind.Relative), new Dictionary<string, string>
@@ -98,12 +98,12 @@ namespace SpaceTradersDotNetSDK.Clients
         /// <param name="shipSymbol"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public async Task<ShipNav> OrbitShip(string shipSymbol)
+        public async Task<OrbitResponse> OrbitShip(string shipSymbol)
         {
             if (string.IsNullOrEmpty(shipSymbol))
                 throw new ArgumentNullException(nameof(shipSymbol));
 
-            return await API.Post<ShipNav>(new Uri($"my/ships/{shipSymbol}/orbit", UriKind.Relative));
+            return await API.Post<OrbitResponse>(new Uri($"my/ships/{shipSymbol}/orbit", UriKind.Relative));
         }
 
         /// <summary>
@@ -198,12 +198,12 @@ namespace SpaceTradersDotNetSDK.Clients
         /// <param name="shipSymbol"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public async Task<Survey> ExtractResources(string shipSymbol)
+        public async Task<ExtractResourcesResponse> ExtractResources(string shipSymbol)
         {
             if (string.IsNullOrEmpty(shipSymbol))
                 throw new ArgumentNullException(nameof(shipSymbol));
 
-            return await API.Post<Survey>(new Uri($"my/ships/{shipSymbol}/extract", UriKind.Relative));
+            return await API.Post<ExtractResourcesResponse>(new Uri($"my/ships/{shipSymbol}/extract", UriKind.Relative));
         }
 
         /// <summary>

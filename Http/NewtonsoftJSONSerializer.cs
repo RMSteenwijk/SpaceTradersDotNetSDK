@@ -20,7 +20,7 @@ namespace SpaceTradersDotNetSDK.Http
         {
             var contractResolver = new PrivateFieldDefaultContractResolver
             {
-                NamingStrategy = new SnakeCaseNamingStrategy()
+                NamingStrategy = new CamelCaseNamingStrategy()
             };
 
             _serializerSettings = new JsonSerializerSettings
@@ -36,20 +36,12 @@ namespace SpaceTradersDotNetSDK.Http
 
             if ((response.ContentType?.Equals("application/json", StringComparison.Ordinal) is true || response.ContentType == null))
             {
-                if (typeof(T).GetCustomAttribute(typeof(IsResponseAttribute)) == null)
-                {
-                    JObject obj = JObject.Parse(response.Body as string ?? "");
-                    return new APIResponse<T>(response, obj["data"].ToObject<T>(new JsonSerializer
-                    {
-                        ContractResolver = new PrivateFieldDefaultContractResolver() { NamingStrategy = new SnakeCaseNamingStrategy() },
-                        NullValueHandling = NullValueHandling.Ignore
-                    }));
-                }
-                else
-                {
-                    var body = JsonConvert.DeserializeObject<T>(response.Body as string ?? "", _serializerSettings);
-                    return new APIResponse<T>(response, body!);
-                }
+                JObject obj = JObject.Parse(response.Body as string ?? "");
+                var dataObj = obj["data"];
+                var deserilizedResponse = new APIResponse<T>(response, 
+                    JsonConvert.DeserializeObject<T>(dataObj.ToString(), _serializerSettings)); 
+
+                return deserilizedResponse;
             }
             return new APIResponse<T>(response);
         }

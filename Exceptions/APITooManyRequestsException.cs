@@ -15,7 +15,7 @@ namespace SpaceTradersDotNetSDK
 
       if (response.Headers.TryGetValue("Retry-After", out string? retryAfter))
       {
-        RetryAfter = TimeSpan.FromSeconds(int.Parse(retryAfter, CultureInfo.InvariantCulture));
+        RetryAfter = TimeSpan.FromSeconds(double.Parse(retryAfter, CultureInfo.InvariantCulture));
       }
     }
 

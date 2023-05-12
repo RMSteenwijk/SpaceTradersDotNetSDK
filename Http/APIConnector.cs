@@ -16,11 +16,12 @@ namespace SpaceTradersDotNetSDK.Http
     private readonly IHTTPClient _httpClient;
     private readonly IRetryHandler? _retryHandler;
     private readonly IHTTPLogger? _httpLogger;
+    private static bool _useWaitForCooldown;
 
     public event EventHandler<IResponse>? ResponseReceived;
 
     public APIConnector(Uri baseAddress, IAuthenticator authenticator) :
-      this(baseAddress, authenticator, new NewtonsoftJSONSerializer(), new NetHttpClient(), null, null)
+      this(baseAddress, authenticator, new NewtonsoftJSONSerializer(), new NetHttpClient(), null, null, true)
     { }
     public APIConnector(
       Uri baseAddress,
@@ -28,7 +29,8 @@ namespace SpaceTradersDotNetSDK.Http
       IJSONSerializer jsonSerializer,
       IHTTPClient httpClient,
       IRetryHandler? retryHandler,
-      IHTTPLogger? httpLogger)
+      IHTTPLogger? httpLogger,
+      bool useWaitForCooldown)
     {
       _baseAddress = baseAddress;
       _authenticator = authenticator;
@@ -36,6 +38,7 @@ namespace SpaceTradersDotNetSDK.Http
       _httpClient = httpClient;
       _retryHandler = retryHandler;
       _httpLogger = httpLogger;
+      _useWaitForCooldown = useWaitForCooldown; 
     }
 
     public Task<T> Delete<T>(Uri uri, CancellationToken cancel)
@@ -322,10 +325,19 @@ namespace SpaceTradersDotNetSDK.Http
       throw response.StatusCode switch
       {
         HttpStatusCode.Unauthorized => new APIUnauthorizedException(response),
+        HttpStatusCode.Conflict => _handleServerError(response),
         // TODO: Remove hack once .netstandard 2.0 is not supported
         (HttpStatusCode)429 => new APITooManyRequestsException(response),
         _ => new APIException(response),
       };
+    }
+
+    private static Exception _handleServerError(IResponse response)
+    {
+        if (_useWaitForCooldown)
+            return new APICooldownException(response);
+        else
+            return new APIException(response);
     }
   }
 }

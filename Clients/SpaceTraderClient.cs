@@ -12,6 +12,7 @@ namespace SpaceTradersDotNetSDK.Clients
     {
         private IAPIConnector _connector;
         private SpaceTraderClientConfig _config;
+        private bool _useWaitForCooldownHandler;
         public RegisterClient Register { get; set; }
         public AgentsClient Agents { get; set; }
         public FactionsClient Factions { get; set; }
@@ -19,20 +20,21 @@ namespace SpaceTradersDotNetSDK.Clients
         public ContractsClient Contracts { get; set; }
         public SystemsClient Systems { get; set; }
 
-        public SpaceTraderClient(IHttpClientFactory httpClientFactory, string access_token = "")
-            : this(httpClientFactory.CreateClient(), access_token) { }
+        public SpaceTraderClient(IHttpClientFactory httpClientFactory, string access_token = "", bool useWaitForCooldownHandler = false)
+            : this(httpClientFactory.CreateClient(), access_token, useWaitForCooldownHandler) { }
 
         /// <summary>
         /// Create Client
         /// </summary>
         /// <param name="httpClient"></param>
         /// <param name="access_token"></param>
-        public SpaceTraderClient(HttpClient httpClient, string access_token = "")
+        public SpaceTraderClient(HttpClient httpClient, string access_token = "", bool useWaitForCooldownHandler = false)
         {
+            _useWaitForCooldownHandler = useWaitForCooldownHandler;
             _config = SpaceTraderClientConfig.CreateDefault(new NetHttpClient(httpClient));
             if (!string.IsNullOrEmpty(access_token))
                 _config = _config.WithToken(access_token);
-            _connector = _config.BuildAPIConnector();
+            _connector = _config.BuildAPIConnector(useWaitForCooldownHandler);
 
             Register = new RegisterClient(_connector, _config.BaseAddress);
 
@@ -46,7 +48,7 @@ namespace SpaceTradersDotNetSDK.Clients
         public void UpdateToken(string token)
         {
             _config = _config.WithToken(token);
-            _connector = _config.BuildAPIConnector();
+            _connector = _config.BuildAPIConnector(_useWaitForCooldownHandler);
 
             SetClientsBasedOnConnector();
         }

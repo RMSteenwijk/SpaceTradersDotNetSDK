@@ -215,7 +215,7 @@ namespace SpaceTradersDotNetSDK.Clients
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        public async Task<ShipCargo> JettisonCargo(string shipSymbol, string cargoItemSymbol, int units)
+        public async Task<JettisonCargoResponse> JettisonCargo(string shipSymbol, string cargoItemSymbol, int units)
         {
             if (string.IsNullOrEmpty(shipSymbol))
                 throw new ArgumentNullException(nameof(shipSymbol));
@@ -224,7 +224,11 @@ namespace SpaceTradersDotNetSDK.Clients
             if(units <= 0)
                 throw new ArgumentOutOfRangeException(nameof(units));
 
-            return await API.Post<ShipCargo>(new Uri($"my/ships/{shipSymbol}/jettison", UriKind.Relative));
+            return await API.Post<JettisonCargoResponse>(new Uri($"my/ships/{shipSymbol}/jettison", UriKind.Relative), null, new
+            {
+                symbol = cargoItemSymbol,
+                units = units
+            });
         }
 
         /// <summary>

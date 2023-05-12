@@ -14,9 +14,9 @@ Without existing token:
 2. Create a client instance ```var spaceTraderClient = new SpaceTraderClient(httpClient, "");```
 3. Create an Agent ```var registeredResponse = await spaceTraderClient.Register.Register(FactionType.COSMIC, "yourcallsign");```
 4. Now update the client with ```spaceTraderClient.UpdateToken(registeredResponse.Token);```
-5. Then proceed as normal to query ```var response = await spaceTraderClient.Fleet.GetMyShips(10, 1);```
+5. Then proceed as normal to query ```var response = await spaceTraderClient.Fleet.ListMyShips(10, 1);```
 
 With existing token:
 1. dotnet add package SpaceTradersDotNetSDK
 2. Create a client instance ```var spaceTraderClient = new SpaceTraderClient(httpClient, access_token);```
-3. Query something ```var response = await spaceTraderClient.Fleet.GetMyShips(10, 1);```
+3. Query something ```var response = await spaceTraderClient.Fleet.ListMyShips(10, 1);```

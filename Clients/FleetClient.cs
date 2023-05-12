@@ -78,14 +78,14 @@ namespace SpaceTradersDotNetSDK.Clients
         /// <param name="waypointSymbol"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public async Task<PurchaseShipResponse> PurchaseShip(ShipType shipType, string waypointSymbol)
+        public async Task<PurchaseShipResponse> PurchaseShip(string shipType, string waypointSymbol)
         {
             if (string.IsNullOrEmpty(waypointSymbol))
                 throw new ArgumentNullException(nameof(waypointSymbol));
 
             return await API.Post<PurchaseShipResponse>(new Uri("my/ships", UriKind.Relative), null, new
             {
-                shipType = Enum.GetName(shipType),
+                shipType = shipType,
                 waypointSymbol = waypointSymbol
             });
         }

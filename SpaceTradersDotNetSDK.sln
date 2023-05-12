@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceTradersDotNetSDK", "SpaceTradersDotNetSDK.csproj", "{1729817A-4DC8-4F86-8B4F-89F3BD442755}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceTraderDotNetSDK.Tester", "..\SpaceTraderDotNetSDK.Tester\SpaceTraderDotNetSDK.Tester.csproj", "{0094F74F-AE71-41C6-9C45-491A5B871C18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1729817A-4DC8-4F86-8B4F-89F3BD442755}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1729817A-4DC8-4F86-8B4F-89F3BD442755}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1729817A-4DC8-4F86-8B4F-89F3BD442755}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0094F74F-AE71-41C6-9C45-491A5B871C18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0094F74F-AE71-41C6-9C45-491A5B871C18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0094F74F-AE71-41C6-9C45-491A5B871C18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0094F74F-AE71-41C6-9C45-491A5B871C18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

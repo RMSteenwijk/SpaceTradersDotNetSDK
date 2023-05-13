@@ -13,7 +13,7 @@ namespace SpaceTradersDotNetSDK.ResponseModels.Fleet
     {
         public Agent Agent { get; set; }
 
-        public ShipCargo ShipCargo { get; set; }
+        public ShipCargo Cargo { get; set; }
 
         public MarketTransaction Transaction { get; set; }  
     }

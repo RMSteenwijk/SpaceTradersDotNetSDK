@@ -18,13 +18,5 @@ namespace SpaceTradersDotNetSDK.ResponseModels
         public string Message { get; set; }
 
         public int Code { get; set;}
-
-        public Data Data { get; set; }
-    }
-
-    public partial class Data
-    {
-        [JsonProperty("cooldown")]
-        public Cooldown Cooldown { get; set; }
     }
 }

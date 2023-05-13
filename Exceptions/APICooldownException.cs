@@ -22,7 +22,7 @@ namespace SpaceTradersDotNetSDK
             var errorResponse = JsonConvert.DeserializeObject<CooldownErrorResponse>(response?.Body as string ?? "");
             if(errorResponse != null)
             {
-                RetryAfter = TimeSpan.FromSeconds(errorResponse.Error.Data.Cooldown.RemainingSeconds);
+                RetryAfter = TimeSpan.FromSeconds(2);
             }
         }
 

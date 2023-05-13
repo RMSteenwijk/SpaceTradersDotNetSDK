@@ -168,12 +168,12 @@ namespace SpaceTradersDotNetSDK.Clients
         /// <param name="shipSymbol"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public async Task<ShipNav> DockShip(string shipSymbol)
+        public async Task<DockShipResponse> DockShip(string shipSymbol)
         {
             if (string.IsNullOrEmpty(shipSymbol))
                 throw new ArgumentNullException(nameof(shipSymbol));
 
-            return await API.Post<ShipNav>(new Uri($"my/ships/{shipSymbol}/dock", UriKind.Relative));
+            return await API.Post<DockShipResponse>(new Uri($"my/ships/{shipSymbol}/dock", UriKind.Relative));
         }
 
         /// <summary>

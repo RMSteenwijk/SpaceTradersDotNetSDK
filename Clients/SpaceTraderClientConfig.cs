@@ -132,7 +132,7 @@ namespace SpaceTradersDotNetSDK.Clients
             );
         }
 
-        public IAPIConnector BuildAPIConnector(bool useWaitForCooldownHandler)
+        public IAPIConnector BuildAPIConnector()
         {
             return APIConnector ?? new APIConnector(
               BaseAddress,
@@ -140,8 +140,7 @@ namespace SpaceTradersDotNetSDK.Clients
               JSONSerializer,
               HTTPClient,
               RetryHandler,
-              HTTPLogger,
-              useWaitForCooldownHandler
+              HTTPLogger
             );
         }
 

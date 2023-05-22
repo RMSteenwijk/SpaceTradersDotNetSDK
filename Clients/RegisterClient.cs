@@ -8,7 +8,7 @@ namespace SpaceTradersDotNetSDK.Clients
     {
         public RegisterClient(IAPIConnector connector, Uri baseAdress) : base(connector, baseAdress) { }
 
-        public Task<RegisterResponse> Register(FactionType faction, string callSign, string email = "")
+        public Task<RegisterResponse> Register(string factionSymbol, string callSign, string email = "")
         {
             if (callSign.Length < 3)
                 throw new ArgumentException($"Length of {nameof(callSign)} is short");
@@ -19,7 +19,7 @@ namespace SpaceTradersDotNetSDK.Clients
                 new 
                 { 
                     symbol = callSign, 
-                    faction = Enum.GetName(typeof(FactionType), faction),
+                    faction = factionSymbol,
                     email = email   
                 });
         }

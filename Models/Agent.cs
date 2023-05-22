@@ -42,7 +42,7 @@ namespace SpaceTradersDotNetSDK.Models
         /// <param name="symbol">symbol (required).</param>
         /// <param name="headquarters">The headquarters of the agent. (required).</param>
         /// <param name="credits">The number of credits the agent has available. Credits can be negative if funds have been overdrawn. (required).</param>
-        /// <param name="credits">The faction the agent started with.</param>
+        /// <param name="startingFaction">The faction the agent started with.</param>
         public Agent(string accountId = default(string), string symbol = default(string), string headquarters = default(string), int credits = default(int), string startingFaction = default(string))
         {
             // to ensure "accountId" is required (not null)

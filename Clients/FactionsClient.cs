@@ -23,9 +23,9 @@ namespace SpaceTradersDotNetSDK.Clients
             });
         }
 
-        public async Task<Faction> GetFactionAsync(FactionType factionType)
+        public async Task<Faction> GetFactionAsync(string factionSymbol)
         {
-            return await API.Get<Faction>(new Uri($"factions/{Enum.GetName(typeof(FactionType), factionType) }", UriKind.Relative));
+            return await API.Get<Faction>(new Uri($"factions/{factionSymbol}", UriKind.Relative));
         }
     }
 }

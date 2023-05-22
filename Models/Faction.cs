@@ -43,7 +43,8 @@ namespace SpaceTradersDotNetSDK.Models
         /// <param name="description">description (required).</param>
         /// <param name="headquarters">headquarters (required).</param>
         /// <param name="traits">traits (required).</param>
-        public Faction(string symbol = default(string), string name = default(string), string description = default(string), string headquarters = default(string), List<FactionTrait> traits = default(List<FactionTrait>))
+        /// <param name="isRecruiting">Whether or not the faction is currently recruiting new agents.</param>
+        public Faction(string symbol = default(string), string name = default(string), string description = default(string), string headquarters = default(string), List<FactionTrait> traits = default(List<FactionTrait>), bool isRecruiting = true)
         {
             // to ensure "symbol" is required (not null)
             if (symbol == null)
@@ -95,6 +96,7 @@ namespace SpaceTradersDotNetSDK.Models
                 this.Traits = traits;
             }
 
+            IsRecruiting = isRecruiting;
         }
 
         /// <summary>
@@ -126,6 +128,12 @@ namespace SpaceTradersDotNetSDK.Models
         /// </summary>
         [DataMember(Name="traits", EmitDefaultValue=true)]
         public List<FactionTrait> Traits { get; set; }
+
+        /// <summary>
+        /// Whether or not the faction is currently recruiting new agents.
+        /// </summary>
+        [DataMember(Name = "isRecruiting", EmitDefaultValue = true)]
+        public bool IsRecruiting { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

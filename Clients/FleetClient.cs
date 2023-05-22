@@ -198,12 +198,15 @@ namespace SpaceTradersDotNetSDK.Clients
         /// <param name="shipSymbol"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public async Task<ExtractResourcesResponse> ExtractResources(string shipSymbol)
+        public async Task<ExtractResourcesResponse> ExtractResources(string shipSymbol, Survey survey = null)
         {
             if (string.IsNullOrEmpty(shipSymbol))
                 throw new ArgumentNullException(nameof(shipSymbol));
 
-            return await API.Post<ExtractResourcesResponse>(new Uri($"my/ships/{shipSymbol}/extract", UriKind.Relative));
+            return await API.Post<ExtractResourcesResponse>(new Uri($"my/ships/{shipSymbol}/extract", UriKind.Relative), null, new 
+            { 
+                survey = survey
+            });
         }
 
         /// <summary>

@@ -34,7 +34,7 @@ namespace SpaceTradersDotNetSDK.Models
         /// Gets or Sets Symbol
         /// </summary>
         [DataMember(Name="symbol", EmitDefaultValue=true)]
-        public TradeSymbol Symbol { get; set; }
+        public string Symbol { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="TradeGood" /> class.
         /// </summary>
@@ -46,7 +46,7 @@ namespace SpaceTradersDotNetSDK.Models
         /// <param name="symbol">symbol (required).</param>
         /// <param name="name">name (required).</param>
         /// <param name="description">description (required).</param>
-        public TradeGood(TradeSymbol symbol = default(TradeSymbol), string name = default(string), string description = default(string))
+        public TradeGood(string symbol = default(string), string name = default(string), string description = default(string))
         {
             // to ensure "symbol" is required (not null)
             if (symbol == null)

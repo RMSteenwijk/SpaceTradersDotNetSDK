@@ -42,7 +42,8 @@ namespace SpaceTradersDotNetSDK.Models
         /// <param name="symbol">symbol (required).</param>
         /// <param name="headquarters">The headquarters of the agent. (required).</param>
         /// <param name="credits">The number of credits the agent has available. Credits can be negative if funds have been overdrawn. (required).</param>
-        public Agent(string accountId = default(string), string symbol = default(string), string headquarters = default(string), int credits = default(int))
+        /// <param name="credits">The faction the agent started with.</param>
+        public Agent(string accountId = default(string), string symbol = default(string), string headquarters = default(string), int credits = default(int), string startingFaction = default(string))
         {
             // to ensure "accountId" is required (not null)
             if (accountId == null)
@@ -72,6 +73,16 @@ namespace SpaceTradersDotNetSDK.Models
             else
             {
                 this.Headquarters = headquarters;
+            }
+
+            // to ensure "startingFaction" is required (not null)
+            if (StartingFaction == null)
+            {
+                throw new InvalidDataException("startingFaction is a required property for Agent and cannot be null");
+            }
+            else
+            {
+                this.StartingFaction = startingFaction;
             }
 
             // to ensure "credits" is required (not null)
@@ -111,6 +122,13 @@ namespace SpaceTradersDotNetSDK.Models
         /// <value>The number of credits the agent has available. Credits can be negative if funds have been overdrawn.</value>
         [DataMember(Name="credits", EmitDefaultValue=true)]
         public int Credits { get; set; }
+
+        /// <summary>
+        /// The faction the agent started with.
+        /// </summary>
+        /// <value>The faction the agent started with.</value>
+        [DataMember(Name="startingFaction", EmitDefaultValue=true)]
+        public string StartingFaction { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

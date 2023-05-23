@@ -1,10 +1,11 @@
-﻿using SpaceTradersDotNetSDK.Http;
+﻿using SpaceTradersDotNetSDK.Clients.Interfaces;
+using SpaceTradersDotNetSDK.Http;
 using SpaceTradersDotNetSDK.Models;
 using SpaceTradersDotNetSDK.Models.Enums;
 
 namespace SpaceTradersDotNetSDK.Clients
 {
-    public class FactionsClient : APIClient
+    public class FactionsClient : APIClient, IFactionsClient
     {
         public FactionsClient(IAPIConnector apiConnector, Uri baseAdress) : base(apiConnector, baseAdress)
         { }

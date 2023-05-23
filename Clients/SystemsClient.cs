@@ -1,9 +1,10 @@
-﻿using SpaceTradersDotNetSDK.Http;
+﻿using SpaceTradersDotNetSDK.Clients.Interfaces;
+using SpaceTradersDotNetSDK.Http;
 using SpaceTradersDotNetSDK.Models;
 
 namespace SpaceTradersDotNetSDK.Clients
 {
-    public class SystemsClient : APIClient
+    public class SystemsClient : APIClient, ISystemsClient
     {
         public SystemsClient(IAPIConnector apiConnector, Uri baseAdress) : base(apiConnector, baseAdress)
         { }

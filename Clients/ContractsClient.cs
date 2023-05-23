@@ -1,4 +1,5 @@
-﻿using SpaceTradersDotNetSDK.Http;
+﻿using SpaceTradersDotNetSDK.Clients.Interfaces;
+using SpaceTradersDotNetSDK.Http;
 using SpaceTradersDotNetSDK.Models;
 using SpaceTradersDotNetSDK.ResponseModels.Contracts;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SpaceTradersDotNetSDK.Clients
 {
-    public class ContractsClient : APIClient
+    public class ContractsClient : APIClient, IContractsClient
     {
         public ContractsClient(IAPIConnector apiConnector, Uri baseAdress) : base(apiConnector, baseAdress)
         { }

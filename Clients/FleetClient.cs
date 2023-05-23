@@ -14,10 +14,11 @@ using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.Data;
 using System.Runtime.Intrinsics.X86;
+using SpaceTradersDotNetSDK.Clients.Interfaces;
 
 namespace SpaceTradersDotNetSDK.Clients
 {
-    public class FleetClient : APIClient
+    public class FleetClient : APIClient, IFleetClient
     {
         public FleetClient(IAPIConnector apiConnector, Uri baseAdress) : base(apiConnector, baseAdress)
         { }

@@ -1,4 +1,5 @@
-﻿using SpaceTradersDotNetSDK.Http;
+﻿using SpaceTradersDotNetSDK.Clients.Interfaces;
+using SpaceTradersDotNetSDK.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace SpaceTradersDotNetSDK.Clients
 {
-    public class SpaceTraderClient
+    public class SpaceTraderClient : ISpaceTraderClient
     {
         private IAPIConnector _connector;
         private SpaceTraderClientConfig _config;
-        public RegisterClient Register { get; set; }
-        public AgentsClient Agents { get; set; }
-        public FactionsClient Factions { get; set; }
-        public FleetClient Fleet { get; set; }
-        public ContractsClient Contracts { get; set; }
-        public SystemsClient Systems { get; set; }
+        public IRegisterClient Register { get; set; }
+        public IAgentsClient Agents { get; set; }
+        public IFactionsClient Factions { get; set; }
+        public IFleetClient Fleet { get; set; }
+        public IContractsClient Contracts { get; set; }
+        public ISystemsClient Systems { get; set; }
 
         public SpaceTraderClient(IHttpClientFactory httpClientFactory, string access_token = "")
             : this(httpClientFactory.CreateClient(), access_token) { }
@@ -36,7 +37,7 @@ namespace SpaceTradersDotNetSDK.Clients
 
             Register = new RegisterClient(_connector, _config.BaseAddress);
 
-            SetClientsBasedOnConnector();
+            _setClientsBasedOnConnector();
         }
 
         /// <summary>
@@ -48,10 +49,10 @@ namespace SpaceTradersDotNetSDK.Clients
             _config = _config.WithToken(token);
             _connector = _config.BuildAPIConnector();
 
-            SetClientsBasedOnConnector();
+            _setClientsBasedOnConnector();
         }
 
-        public void SetClientsBasedOnConnector()
+        private void _setClientsBasedOnConnector()
         {
             Agents = new AgentsClient(_connector, _config.BaseAddress);
             Factions = new FactionsClient(_connector, _config.BaseAddress);

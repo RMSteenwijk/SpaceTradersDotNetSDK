@@ -43,100 +43,118 @@ namespace SpaceTradersDotNetSDK.Models
             MINERALPROCESSORI = 1,
 
             /// <summary>
+            /// Enum GASPROCESSORI for value: MODULE_GAS_PROCESSOR_I
+            /// </summary>
+            [EnumMember(Value = "MODULE_GAS_PROCESSOR_I")]
+            GASPROCESSORI = 2,
+
+            /// <summary>
             /// Enum CARGOHOLDI for value: MODULE_CARGO_HOLD_I
             /// </summary>
             [EnumMember(Value = "MODULE_CARGO_HOLD_I")]
-            CARGOHOLDI = 2,
+            CARGOHOLDI = 3,
+
+            /// <summary>
+            /// Enum CARGOHOLDII for value: MODULE_CARGO_HOLD_II
+            /// </summary>
+            [EnumMember(Value = "MODULE_CARGO_HOLD_II")]
+            CARGOHOLDII = 4,
+
+            /// <summary>
+            /// Enum CARGOHOLDIII for value: MODULE_CARGO_HOLD_III
+            /// </summary>
+            [EnumMember(Value = "MODULE_CARGO_HOLD_III")]
+            CARGOHOLDIII = 5,
 
             /// <summary>
             /// Enum CREWQUARTERSI for value: MODULE_CREW_QUARTERS_I
             /// </summary>
             [EnumMember(Value = "MODULE_CREW_QUARTERS_I")]
-            CREWQUARTERSI = 3,
+            CREWQUARTERSI = 6,
 
             /// <summary>
             /// Enum ENVOYQUARTERSI for value: MODULE_ENVOY_QUARTERS_I
             /// </summary>
             [EnumMember(Value = "MODULE_ENVOY_QUARTERS_I")]
-            ENVOYQUARTERSI = 4,
+            ENVOYQUARTERSI = 7,
 
             /// <summary>
             /// Enum PASSENGERCABINI for value: MODULE_PASSENGER_CABIN_I
             /// </summary>
             [EnumMember(Value = "MODULE_PASSENGER_CABIN_I")]
-            PASSENGERCABINI = 5,
+            PASSENGERCABINI = 8,
 
             /// <summary>
             /// Enum MICROREFINERYI for value: MODULE_MICRO_REFINERY_I
             /// </summary>
             [EnumMember(Value = "MODULE_MICRO_REFINERY_I")]
-            MICROREFINERYI = 6,
+            MICROREFINERYI = 9,
 
             /// <summary>
             /// Enum OREREFINERYI for value: MODULE_ORE_REFINERY_I
             /// </summary>
             [EnumMember(Value = "MODULE_ORE_REFINERY_I")]
-            OREREFINERYI = 7,
+            OREREFINERYI = 10,
 
             /// <summary>
             /// Enum FUELREFINERYI for value: MODULE_FUEL_REFINERY_I
             /// </summary>
             [EnumMember(Value = "MODULE_FUEL_REFINERY_I")]
-            FUELREFINERYI = 8,
+            FUELREFINERYI = 11,
 
             /// <summary>
             /// Enum SCIENCELABI for value: MODULE_SCIENCE_LAB_I
             /// </summary>
             [EnumMember(Value = "MODULE_SCIENCE_LAB_I")]
-            SCIENCELABI = 9,
+            SCIENCELABI = 12,
 
             /// <summary>
             /// Enum JUMPDRIVEI for value: MODULE_JUMP_DRIVE_I
             /// </summary>
             [EnumMember(Value = "MODULE_JUMP_DRIVE_I")]
-            JUMPDRIVEI = 10,
+            JUMPDRIVEI = 13,
 
             /// <summary>
             /// Enum JUMPDRIVEII for value: MODULE_JUMP_DRIVE_II
             /// </summary>
             [EnumMember(Value = "MODULE_JUMP_DRIVE_II")]
-            JUMPDRIVEII = 11,
+            JUMPDRIVEII = 14,
 
             /// <summary>
             /// Enum JUMPDRIVEIII for value: MODULE_JUMP_DRIVE_III
             /// </summary>
             [EnumMember(Value = "MODULE_JUMP_DRIVE_III")]
-            JUMPDRIVEIII = 12,
+            JUMPDRIVEIII = 15,
 
             /// <summary>
             /// Enum WARPDRIVEI for value: MODULE_WARP_DRIVE_I
             /// </summary>
             [EnumMember(Value = "MODULE_WARP_DRIVE_I")]
-            WARPDRIVEI = 13,
+            WARPDRIVEI = 16,
 
             /// <summary>
             /// Enum WARPDRIVEII for value: MODULE_WARP_DRIVE_II
             /// </summary>
             [EnumMember(Value = "MODULE_WARP_DRIVE_II")]
-            WARPDRIVEII = 14,
+            WARPDRIVEII = 17,
 
             /// <summary>
             /// Enum WARPDRIVEIII for value: MODULE_WARP_DRIVE_III
             /// </summary>
             [EnumMember(Value = "MODULE_WARP_DRIVE_III")]
-            WARPDRIVEIII = 15,
+            WARPDRIVEIII = 18,
 
             /// <summary>
             /// Enum SHIELDGENERATORI for value: MODULE_SHIELD_GENERATOR_I
             /// </summary>
             [EnumMember(Value = "MODULE_SHIELD_GENERATOR_I")]
-            SHIELDGENERATORI = 16,
+            SHIELDGENERATORI = 19,
 
             /// <summary>
             /// Enum SHIELDGENERATORII for value: MODULE_SHIELD_GENERATOR_II
             /// </summary>
             [EnumMember(Value = "MODULE_SHIELD_GENERATOR_II")]
-            SHIELDGENERATORII = 17
+            SHIELDGENERATORII = 20
 
         }
 
